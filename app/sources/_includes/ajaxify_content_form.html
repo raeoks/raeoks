@@ -1,0 +1,23 @@
+<script>
+  var contactForm     = document.querySelector('form');
+  var inputEmail      = contactForm.querySelector('[name="email"]');
+  var textAreaMessage = contactForm.querySelector('[name="content"]');
+  var sendButton      = contactForm.querySelector('button');
+  sendButton.addEventListener('click', function (event) {
+    var xhr;
+    event.preventDefault();
+    sendButton.innerHTML = '{{ site.text.contact.ajax.sending }}';
+    xhr                  = new XMLHttpRequest();
+    xhr.open('POST', '//formspree.io/{{ site.email }}', true);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("email=" + inputEmail.value + "&message=" + textAreaMessage.value);
+    xhr.onloadend = function (response) {
+      if (response.target.status === 200) {
+        sendButton.innerHTML = '{{ site.text.contact.ajax.sent }}';
+        return;
+      }
+      sendButton.innerHTML = '{{ site.text.contact.ajax.error }}';
+    }
+  });
+</script>

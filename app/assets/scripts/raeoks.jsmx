@@ -1,0 +1,36 @@
+"use strict";
+
+import $ from "jquery";
+import jQuery from "jquery";
+
+import * as _ from "lodash";
+import * as lodash from "lodash";
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import AnchorJS from "anchor-js";
+
+import HomePage from './pages/home.jsmx';
+
+function Initialize(container) {
+  let root = document.getElementById(container);
+  if (_.some(container)) {
+    ReactDOM.render(React.createElement(HomePage, {}), root);
+  }
+}
+
+$(() => {
+  global.window.$      = $;
+  global.window.jQuery = jQuery;
+  global.window._      = _;
+  global.window.lodash = lodash;
+
+  require("./vendor/modernizr");
+
+  global.window.anchors                 = new AnchorJS();
+  global.window.anchors.options.visible = "always";
+  global.window.anchors.add("article h2, article h3, article h4, article h5, article h6");
+});
+
+Initialize("raeoks-react-root");

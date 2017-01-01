@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body class="site">
+{{ content }}
+<script type="text/javascript"
+        src="{{ '/scripts/raeoks.js' | prepend: site.baseurl }}?{{ site.time | date: '%Y%m%d%H%M' }}">
+  // Loads RaeoksJS
+</script>
+</body>
+</html>

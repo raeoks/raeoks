@@ -1,0 +1,22 @@
+"use strict";
+
+import React from "react";
+import Highlight from 'react-fast-highlight';
+
+const HomePage = () => (
+  <Highlight languages={['ruby']}>
+    {`
+    Make.new(:defunct, {
+        :name => %q{Ranjeet Singh},
+        :info => %w(Software Data DevOps).map { |trait| %Q{#{trait} Engineer} },
+        :urls => %w{Blog Twitter Facebook LinkedIn},
+        :code => %w[GitHub BitBucket],
+        :mail => %i(secure gmail outlook yahoo),
+        :chat => %i{freenode skype discord},
+        :locn => ['The Internet']
+    })
+   `}
+  </Highlight>
+);
+
+export default HomePage;
